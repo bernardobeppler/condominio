@@ -10,3 +10,10 @@
   margin: auto;
   display: block;
 }
+
+
+.footer-copyright{
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+}

@@ -8,7 +8,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 })
 export class NavBarComponent implements AfterViewInit {
   @ViewChild('mobile') sideNav?: ElementRef;
-  isHideMenu = true;
+  isHideMenu = false;
   title = 'condominio';
 
   ngAfterViewInit(): void {

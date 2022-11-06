@@ -3,13 +3,6 @@
 </header>
 
 <main>
-  - Utilizando Materialize
-  <br>
-  - Adicionado 2 componentes, cabeçalho e rodapé
-  <br>
-  - Ano do Copyright dinamico usando Interpolation!
-  <br>
-  - Menu do topo escondido usando Property Binding!
   <router-outlet></router-outlet>
 </main>
 
@@ -17,5 +10,10 @@
 
 
 <footer>
-  <app-footer></app-footer>
+  <app-footer>
+    <span style="font-weight: bold">
+    {{this?.currentDate | date: "HH:mm:ss"}}
+    </span>
+    - Latitude: {{this?.coords?.latitude}} - Longitude: {{this?.coords?.longitude}}
+  </app-footer>
 </footer>
