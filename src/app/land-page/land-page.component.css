@@ -2,16 +2,12 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: #CFD8DC;
 }
 
 main {
   flex: 1 0 auto;
 }
-
-body {
-  background: #CFD8DC;
-}
-
 
 .btn-login {
     background-color: #607D8B;

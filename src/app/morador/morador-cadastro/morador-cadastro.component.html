@@ -1,0 +1,101 @@
+<div class="container contact">
+  <h5>Cadastro de Moradores</h5>
+  <h6>Entre com os dados do morador</h6>
+  <hr />
+  <div class="row">
+    <div class="col s12">
+      <div
+        id="msg-login"
+        class="card-panel white-text"
+        [class.red]="!this.isSuccess"
+        [class.blue]="this.isSuccess"
+        *ngIf="this.isShowMessage">
+        {{ this.message }}
+      </div>
+    </div>
+    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+      <div class="input-field col s12">
+        <input
+          id="input-name"
+          name="input-name"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.morador.nome"
+          pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+          #nome="ngModel"
+          required
+        />
+        <label for="input-name">Nome Completo *</label>
+        <div class="red-text" [hidden]="nome.valid || nome.untouched">
+          Por favor, informe o nome do morador.
+        </div>
+        <span
+          class="helper-text"
+          data-error="O campo é inválido"
+          data-success="Ok!"
+        ></span>
+      </div>
+
+      <div class="input-field col s6">
+        <input
+          id="input-situacao"
+          name="input-situacao"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.morador.situacao"
+          pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)"
+          #situacao="ngModel"
+          required
+        />
+        <label for="input-situacao">Situação* (Próprio/Alugado)</label>
+        <div class="red-text" [hidden]="situacao.valid || situacao.untouched">
+          Por favor, informe o apartamento é Próprio ou Alugado.
+        </div>
+      </div>
+
+      <div class="input-field col s12 l3">
+        <input
+          id="input-bloco"
+          name="input-bloco"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.morador.bloco"
+          pattern="[1-8]"
+          #bloco="ngModel"
+          required
+        />
+        <label for="input-bloco">Bloco *</label>
+        <div class="red-text" [hidden]="bloco.valid || bloco.untouched">
+          Por favor, informe um bloco de 1 a 8.
+        </div>
+      </div>
+
+      <div class="input-field col s12 l3">
+        <input
+          id="input-apartamento"
+          name="input-apartamento"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.morador.apartamento"
+          pattern="[1-7][0][1-8]"
+          #apartamento="ngModel"
+          required
+        />
+        <label for="input-apartamento">Apartamento *</label>
+        <div
+          class="red-text"
+          [hidden]="apartamento.valid || apartamento.untouched">
+          Por favor, informe um apartamento de 101-108 até 701-708.
+        </div>
+      </div>
+
+      <button
+        class="btn"
+        type="submit"
+        [disabled]="!form.valid">
+        Enviar
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+</div>
