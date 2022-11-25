@@ -1,0 +1,4 @@
+{
+  "moradores": "/morador",
+  "/morador/:nome": "/morador?nome=:nome"
+}

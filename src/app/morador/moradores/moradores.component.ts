@@ -1,6 +1,8 @@
-import { MoradorStorageService } from 'src/app/morador/moradores/morador-storage.service';
+import { MoradorPromiseService } from './../../services/morador-promise.service';
+import { Constants } from './../../util/constants';
+import { WebStorageUtil } from './../../util/web-storage-util';
+import { MoradorStorageService } from 'src/app/services/morador-storage.service';
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { Morador } from 'src/app/model/morador';
 import { Shared } from 'src/app/util/shared';
 
@@ -19,14 +21,33 @@ export class MoradoresComponent implements OnInit {
   isSuccess!: boolean;
   message!: string;
 
-  constructor(private moradorService: MoradorStorageService) {
-  }
+  constructor(
+    private moradorService: MoradorStorageService,
+    private MoradorPromiseService: MoradorPromiseService
+    ) { }
 
   ngOnInit(): void {
+    this.message = '';
     Shared.initializeWebStorage();
-    this.morador = new Morador('', '', '', '');
-    this.moradores = this.moradorService.getMoradores();
+    this.morador = WebStorageUtil.get(Constants.MORADORES_KEY);
+    this.MoradorPromiseService
+      .getByNome(Constants.MORADORES_KEY)
+      .then((m: Morador[]) => {
+        this.morador = m[0];
+        localStorage.setItem(
+          Constants.MORADORES_KEY,
+           JSON.stringify(Morador.toWS(this.morador))
+           );
+      })
+      .catch(() => {
+        this.morador = WebStorageUtil.get(Constants.MORADORES_KEY);
+      }
+      );
   }
+
+    /**
+     * @param morador
+   */
 
   onEdit(morador: Morador) {
     let clone = Morador.clone(morador);

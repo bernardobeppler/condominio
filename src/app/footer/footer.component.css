@@ -6,9 +6,12 @@
 }
 
 
-.my-logo{
+.my-logo-footer{
   margin: auto;
   display: block;
+  width: 25%;
+  margin-left: auto;
+  margin-right: 0%;
 }
 
 
@@ -16,4 +19,14 @@
   color: #fff;
   font-size: 14px;
   display: flex;
+}
+
+
+.container{
+  margin: auto;
+  display: block;
+  width: 65%;
+  margin-left: auto;
+  margin-right: 2%;
+  margin-top: 5px;
 }

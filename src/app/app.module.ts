@@ -1,7 +1,7 @@
-import { MoradorStorageService } from 'src/app/morador/moradores/morador-storage.service';
+import { MoradorStorageService } from 'src/app/services/morador-storage.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -27,7 +27,8 @@ import { FormsModule }   from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [MoradorStorageService],
   bootstrap: [AppComponent]
