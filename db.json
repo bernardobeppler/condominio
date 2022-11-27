@@ -48,41 +48,6 @@
       "situacao": "Proprietário",
       "bloco": "1",
       "apartamento": "107"
-    },
-    {
-      "id": 8,
-      "nome": "Mariana da Silva",
-      "situacao": "Alugado",
-      "bloco": "6",
-      "apartamento": "108"
-    },
-    {
-      "id": 9,
-      "nome": "Rafael da Silva",
-      "situacao": "Proprietário",
-      "bloco": "5",
-      "apartamento": "109"
-    },
-    {
-      "id": 10,
-      "nome": "Julia da Silva",
-      "situacao": "Alugado",
-      "bloco": "3",
-      "apartamento": "110"
-    },
-    {
-      "id": 11,
-      "nome": "Marcos da Silva",
-      "situacao": "Proprietário",
-      "bloco": "1",
-      "apartamento": "111"
-    },
-    {
-      "id": 12,
-      "nome": "Marta da Silva",
-      "situacao": "Alugado",
-      "bloco": "2",
-      "apartamento": "305"
     }
   ]
 }

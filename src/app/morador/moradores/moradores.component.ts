@@ -1,8 +1,10 @@
+import { MoradorService } from './morador.service';
+import { HttpClient } from '@angular/common/http';
 import { MoradorPromiseService } from './../../services/morador-promise.service';
 import { Constants } from './../../util/constants';
 import { WebStorageUtil } from './../../util/web-storage-util';
 import { MoradorStorageService } from 'src/app/services/morador-storage.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Morador } from 'src/app/model/morador';
 import { Shared } from 'src/app/util/shared';
 
@@ -12,6 +14,7 @@ import { Shared } from 'src/app/util/shared';
   styleUrls: ['./moradores.component.css']
 })
 export class MoradoresComponent implements OnInit {
+  @ViewChild('stateSelect') stateSelect!: ElementRef;
   value: number = 0;
   morador!: Morador;
   moradores?: Morador[];
@@ -22,54 +25,40 @@ export class MoradoresComponent implements OnInit {
   message!: string;
 
   constructor(
-    private moradorService: MoradorStorageService,
-    private MoradorPromiseService: MoradorPromiseService
+    private MoradorStorageService: MoradorStorageService,
+    private MoradorPromiseService: MoradorPromiseService,
+    private MoradorService: MoradorService,
     ) { }
 
   ngOnInit(): void {
     this.message = '';
-    Shared.initializeWebStorage();
-    this.morador = WebStorageUtil.get(Constants.MORADORES_KEY);
-    this.MoradorPromiseService
-      .getByNome(Constants.MORADORES_KEY)
-      .then((m: Morador[]) => {
-        this.morador = m[0];
-        localStorage.setItem(
-          Constants.MORADORES_KEY,
-           JSON.stringify(Morador.toWS(this.morador))
-           );
-      })
-      .catch(() => {
-        this.morador = WebStorageUtil.get(Constants.MORADORES_KEY);
-      }
-      );
+      this.MoradorService
+      .getMoradores().forEach((morador) => {
+        this.moradores = morador;
+      });
   }
 
     /**
      * @param morador
    */
 
+
+
+
   onEdit(morador: Morador) {
-    let clone = Morador.clone(morador);
-    this.morador = clone;
+    location.pathname = '/cadastrar';
+    // location.pathname = '/moradores';
   }
 
-  onDelete(nome: string) {
+  onDelete(id: string) {
     let confirmation = window.confirm(
-      'Você tem certeza que deseja remover o morador: ' + nome
+      'Você tem certeza que deseja remover o morador?'
     );
     if (!confirmation) {
       return;
     }
-    let response: boolean = this.moradorService.delete(nome);
-    this.isShowMessage = true;
-    this.isSuccess = response;
-    if (response) {
-      this.message = 'O morador foi removido com sucesso!';
-    } else {
-      this.message = 'Opps! O morador não pode ser removido!';
-    }
-    this.moradores = this.moradorService.getMoradores();
+    this.MoradorPromiseService.delete(id);
+    location.reload();
   }
 
 }

@@ -13,17 +13,19 @@
 
     <tbody>
       <tr *ngFor="let m of moradores">
-        <td>{{ m.nome | titlecase }}</td>
-        <td>{{ m.situacao}}</td>
+        <td>{{ m.nome | uppercase }}</td>
+        <td>{{ m.situacao | lowercase}}</td>
         <td>{{ m.bloco}}</td>
         <td>{{ m.apartamento}}</td>
         <td class="right">
           <a>
-            <i class="material-icons my-icon-size" (click)="onEdit(m)" routerLink="cadastrar">edit</i>
+            <i class="material-icons my-icon-size"
+             (click)="onEdit(m)"
+             >edit</i>
           </a>
           <a>
             <i class="material-icons my-icon-size"
-              (click)="onDelete(m.nome!)"
+              (click)="onDelete(m.id)"
               >delete</i>
               </a>
         </td>

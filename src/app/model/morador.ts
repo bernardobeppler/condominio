@@ -1,10 +1,11 @@
 export class Morador {
-    id!: number;
+    id!: string;
     nome: string;
     situacao: string;
     bloco: string;
     apartamento: string;
     constructor(nome: string, situacao: string, bloco: string, apartamento: string) {
+        this.id = String(Math.round(Math.random() * 1000))
         this.nome = nome;
         this.situacao = situacao;
         this.bloco = bloco;

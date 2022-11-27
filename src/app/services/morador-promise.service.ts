@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Morador } from "src/app/model/morador";
@@ -8,7 +9,8 @@ import { Morador } from "src/app/model/morador";
   providedIn: "root",
 })
 export class MoradorPromiseService {
-  URL = "http://localhost:3000";
+  moradores!: Morador[];
+  URL = "http://localhost:3000/moradores";
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -16,12 +18,17 @@ export class MoradorPromiseService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getByNome(nome: string): Promise<Morador[]> {
-    // @ts-ignore
-    return this.httpClient
-    .get<Morador[]>(`${this.URL}/${nome}`)
-    .toPromise();
+
+  getMoradores(): Observable<Morador[]> {
+    return this.httpClient.get<Morador[]>(this.URL);
   }
+
+
+  getByName(nome: string): Observable<Morador[]> {
+    return this.httpClient
+    .get<Morador[]>(`${this.URL}?nome=${nome}`);
+  }
+
 
   save(morador: Morador): Promise<Morador> {
     // @ts-ignore
@@ -41,14 +48,21 @@ export class MoradorPromiseService {
     .toPromise();
   }
 
+  delete(id: string): Promise<Morador> {
+    // @ts-ignore
+    return this.httpClient
+    .delete<Morador>(`${this.URL}/${id}`)
+    .toPromise();
+  }
+
   update(morador: Morador): Promise<Morador> {
     // @ts-ignore
     return this.httpClient
     .put<Morador>(
       `${this.URL}/${morador.id}`,
-       JSON.stringify(morador),
-       this.httpOptions
-       )
+      JSON.stringify(morador),
+      this.httpOptions
+      )
     .toPromise();
   }
 }
