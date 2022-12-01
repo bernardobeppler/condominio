@@ -1,19 +1,17 @@
-<header>
-  <app-nav-bar></app-nav-bar>
-</header>
+  <header>
+    <app-nav-bar></app-nav-bar>
+  </header>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
-
-
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 
 
-<footer>
-  <app-footer>
-    <span style="font-weight: bold">
-    {{this?.currentDate | date: "HH:mm:ss"}}
-    </span>
-    - Latitude: {{this?.coords?.latitude}} - Longitude: {{this?.coords?.longitude}}
-  </app-footer>
-</footer>
+  <footer>
+    <app-footer>
+      <span style="font-weight: bold">
+      {{this?.currentDate | date: "HH:mm:ss"}}
+      </span>
+      - Latitude: {{this?.coords?.latitude}} - Longitude: {{this?.coords?.longitude}}
+    </app-footer>
+  </footer>

@@ -1,4 +1,0 @@
-// {
-  // "moradores": "/moradores",
-  // "/moradores/:nome": "/moradores?nome=:nome"
-// }
