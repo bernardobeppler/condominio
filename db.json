@@ -1,0 +1,53 @@
+{
+  "moradores": [
+    {
+      "id": 1,
+      "nome": "João da Silva",
+      "situacao": "Proprietário",
+      "bloco": "1",
+      "apartamento": "101"
+    },
+    {
+      "id": 2,
+      "nome": "Maria da Silva",
+      "situacao": "Alugado",
+      "bloco": "1",
+      "apartamento": "102"
+    },
+    {
+      "id": 3,
+      "nome": "José da Silva",
+      "situacao": "Proprietário",
+      "bloco": "1",
+      "apartamento": "103"
+    },
+    {
+      "id": 4,
+      "nome": "Ana da Silva",
+      "situacao": "Proprietário",
+      "bloco": "2",
+      "apartamento": "104"
+    },
+    {
+      "id": 5,
+      "nome": "Pedro da Silva",
+      "situacao": "Proprietário",
+      "bloco": "2",
+      "apartamento": "105"
+    },
+    {
+      "id": 6,
+      "nome": "Paulo da Silva",
+      "situacao": "Alugado",
+      "bloco": "4",
+      "apartamento": "106"
+    },
+    {
+      "id": 7,
+      "nome": "Carlos da Silva",
+      "situacao": "Proprietário",
+      "bloco": "1",
+      "apartamento": "107"
+    }
+  ]
+}

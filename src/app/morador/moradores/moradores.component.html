@@ -1,0 +1,55 @@
+<div class="content">
+<h5>Moradores cadastrados</h5>
+
+  <table class="highlight" *ngIf="moradores && moradores!.length > 0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Situação</th>
+        <th>Bloco</th>
+        <th>Apartamento</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let m of moradores">
+        <td>{{ m.nome | uppercase }}</td>
+        <td>{{ m.situacao | lowercase}}</td>
+        <td>{{ m.bloco}}</td>
+        <td>{{ m.apartamento}}</td>
+        <td class="right">
+          <a>
+            <i class="material-icons my-icon-size"
+             (click)="onEdit(m)"
+             >edit</i>
+          </a>
+          <a>
+            <i class="material-icons my-icon-size"
+              (click)="onDelete(m.id)"
+              >delete</i>
+              </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!moradores || moradores!.length == 0">
+    <div class="row">
+      <div class="center-align">
+        <i class="col s12 material-icons large">mood_bad</i>
+        <span class="col s12 flow-text"
+          >Ainda não temos moradores cadastrados!</span
+        >
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="row">
+  <a id="btn-add-morador" routerLink="cadastrar" class="btn-floating pulse btn-large scale-transition">
+    <i class="material-icons">add</i>
+  </a>
+</div>
+</div>

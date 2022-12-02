@@ -1,0 +1,30 @@
+.page-footer-mod{
+  background-color: #607D8B;
+  margin-top: -15px;
+}
+
+
+.my-logo-footer{
+  margin: auto;
+  display: block;
+  width: 25%;
+  margin-left: auto;
+  margin-right: 0%;
+}
+
+
+.footer-copyright{
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+}
+
+
+.container{
+  margin: auto;
+  display: block;
+  width: 65%;
+  margin-left: auto;
+  margin-right: 2%;
+  margin-top: 5px;
+}
