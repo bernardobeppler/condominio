@@ -3,6 +3,8 @@
 Aplicação desenvolvida na disciplina de Frameworks Web da Especialização em JAVA da UTFPR
 Frontend em Angular com backend simulado com API Fake do JSON-Server.
 
+Test SonarCloud
+
 ## Endereço de Deploy - GitHub Pages
 
 https://bernardobeppler.github.io/condominio/
